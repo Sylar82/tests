@@ -1,5 +1,4 @@
 package chuser.autotest;
-import com.google.common.base.Verify;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -11,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -58,13 +56,13 @@ public class FirstTest {
         }
 
            @AfterClass
-        public static void TearDown() throws InterruptedException {
+           public static void TearDown() {
 
-          WebElement SliderButton = driver.findElement(By.cssSelector("#profile-options > i"));
+          WebElement SliderButton = By.cssSelector("#profile-options > i").findElement(driver);
           SliderButton.click();
 
                WebDriverWait wait = new WebDriverWait(driver, 10);
-               WebElement LogOut = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#menuform\\3a j_idt62")));
+               wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#menuform\\3a j_idt62")));
                driver.quit();
     }
 
